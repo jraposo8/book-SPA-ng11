@@ -48,7 +48,7 @@ export class GoogleBooksService {
       title: book?.volumeInfo?.title || '',
       description: book?.volumeInfo?.description || '',
       imageSource: book?.volumeInfo?.imageLinks?.thumbnail || 'https://i.imgur.com/oM3MdAi.png',
-      previewLink: book?.volumeInfo?.previewLink || '#',
+      previewLink: book?.volumeInfo?.previewLink.replace('http','https') || '#',
       id: book?.volumeInfo?.industryIdentifiers?.[0]?.identifier || uuidv4(),
       author: book?.volumeInfo?.authors?.[0] || '',
       isLent: false,
