@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Edit book information</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>{{ book.title}}</h3>
+  <div class="flex flex-col">
+  <form>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput [value]="book.title" #titleInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Author</mat-label>
+        <input matInput [value]="book.author" #authorInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Book description</mat-label>
+        <textarea matInput [value]="book.description" #descriptionInput></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Borrower</mat-label>
+      <input matInput [value]="book.borrower" #borrowerInput>
+    </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose the lent date</mat-label>
+      <input #dateInput matInput [matDatepicker]="picker" [value]="book.lentDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    </div>
+</form>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="pr-2">Cancel</button>
+  <button mat-button (click)="save()" cdkFocusInitial class="text-blue-800">Edit</button>
+</mat-dialog-actions>
