@@ -8,11 +8,12 @@ import { GoogleBooksService } from '../services/google-books.service';
 import { BooksState } from '../state/book.state';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { RemoveBook, UpdateBookInformation } from '../state/book.actions';
 import { RemoveBookDialog } from '../dialogs/remove-book-dialog/remove-book-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { EditBookDataDialog } from '../dialogs/edit-book-data-dialog/edit-book-data-dialog';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-books',
@@ -22,6 +23,7 @@ import { EditBookDataDialog } from '../dialogs/edit-book-data-dialog/edit-book-d
 export class BooksComponent implements OnInit, OnDestroy {
 
   faSearch = faSearch;
+  fontStyleControl = new FormControl();
 
   @ViewChild('searchInput', { static: false })
   searchInput!: ElementRef<HTMLInputElement>;
@@ -69,6 +71,10 @@ export class BooksComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+
+  onToggleChange(book: IBook,value: string) {
+    this.store.dispatch(new UpdateBookInformation({ ...book, isLent: value === 'yes'}))
   }
 
   editDialog(event: Event,book: IBook) {

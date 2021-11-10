@@ -7,8 +7,7 @@
         <input #searchInput (keyup.enter)="searchBook()" type="text" placeholder="Search book" class="px-5 py-4 placeholder-gray-400 text-gray-600 relative bg-white rounded text-base border border-gray-400 outline-none focus:outline-none focus:ring w-full pl-10"/>
     </div>
     <ng-container *ngIf="latestBookSearch$ | async as latestBookSearch">
-
-    <div *ngIf="latestBookSearch.length > 0" class="container my-12 mx-auto pb-20">
+    <div *ngIf="latestBookSearch.length > 0" class="container my-12 mx-auto pb-10">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
             <div *ngFor="let book of latestBookSearch" class="my-1 px-1 w-full md:w-full lg:my-4 lg:px-4 lg:w-1/2">
                 <app-book-card [book]="book"></app-book-card>
@@ -46,7 +45,13 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by is lent">
             Is lent
           </th>
-          <td mat-cell *matCellDef="let element"> {{element.isLent }} </td>
+          <!-- <td mat-cell *matCellDef="let element"> {{element.isLent ? 'yes' : 'no'}} </td> -->
+          <td mat-cell *matCellDef="let element">
+            <mat-button-toggle-group #group="matButtonToggleGroup" aria-label="Font Style" [value]="element.isLent ? 'yes' : 'no'" (change)="onToggleChange(element,group.value)">
+                <mat-button-toggle value="yes">Yes</mat-button-toggle>
+                <mat-button-toggle value="no">No</mat-button-toggle>
+            </mat-button-toggle-group>
+        </td> 
         </ng-container>
 
         <!-- Lent Date Column -->
@@ -55,6 +60,8 @@
               Lent date
             </th>
             <td mat-cell *matCellDef="let element"> {{element.lentDate | date : mediumDate  }} </td>
+            
+
           </ng-container>
 
         <!-- Borrower Column -->

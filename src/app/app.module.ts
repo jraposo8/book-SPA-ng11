@@ -25,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment.prod';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { environment } from 'src/environments/environment.prod';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatButtonToggleModule,
     FormsModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([
