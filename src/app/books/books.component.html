@@ -1,4 +1,4 @@
-<div class="h-full py-20 px-52">
+<div class="h-full lg:py-20 lg:px-52 md:py-10 md:px-28">
     <p class="2xl:text-9xl xl:text-8xl lg:text-7xl md:text-6xl sm:text-6xl text-center font-extrabold text-blue-900 p-10">Google books search</p>
     <div class="relative flex w-full flex-wrap items-stretch mb-3 mat-elevation-z8 rounded">
         <span class="z-10 h-full leading-normal font-normal absolute text-center text-gray-400 bg-transparent rounded text-lg items-center justify-center w-8 pl-3 py-4">
@@ -10,7 +10,7 @@
 
     <div *ngIf="latestBookSearch.length > 0" class="container my-12 mx-auto pb-20">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
-            <div *ngFor="let book of latestBookSearch" class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+            <div *ngFor="let book of latestBookSearch" class="my-1 px-1 w-full md:w-full lg:my-4 lg:px-4 lg:w-1/2">
                 <app-book-card [book]="book"></app-book-card>
             </div>
         </div>
