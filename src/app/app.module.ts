@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -53,8 +54,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormsModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([
-      BooksState
-    ]), 
+      BooksState,
+    ], { developmentMode: !environment.production }), 
     NgxsStoragePluginModule.forRoot(),
   ],
   providers: [],
